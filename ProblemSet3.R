@@ -1,8 +1,68 @@
 ############################
 ###### Problem Set 3 #######
+####### +Activity 5 ########
 ############################
 #### Benjamin Schneider ####
 ############################
+
+#Activity 5 from Class
+
+#1 Students
+HP<-as.list(c("name","courage","ambition", "intelligence", "effort"))
+class(HP)<-"student"
+
+#2 Sorter
+sortinghat<-function(name){
+  courage<-sample(1:100,1)
+  ambition<-sample(1:100,1)
+  intelligence<-sample(1:100,1)
+  effort<-sample(1:100,1)
+  mystudent<- list(name, courage, ambition, intelligence, effort)
+  class(mystudent) <- "student"
+  return(mystudent)
+}
+domattributes<-c(sortinghat("dom")[[2]],sortinghat("dom")[[3]],sortinghat("dom")[[4]],sortinghat("dom")[[5]])
+?sort
+sort.student<-function(x, decreasing = FALSE, ...){
+  a<-domattributes
+  y<-diag(1,4)
+  output<-x%*%y%*%a
+  return()
+}
+y<-diag(1,4)
+t(y)%*%domattributes
+x<-as.matrix()
+sort.student()
+
+y<-diag(1,4)
+names<-c("ben","zoe", "dom")
+class(names)<-"student"
+class(names)
+
+setClass(Class="student",
+         representation=representation(
+           name= "character",
+           courage= "numeric",
+           ambition= "numeric",
+           intelligence= "numeric",
+           effort= "numeric"),
+         prototype=prototype(
+           name=c(),
+           courage=c(1:100),
+           ambition=c(1:100),
+           intelligence=c(1:100),
+           effort=c(1:100)
+         )
+)
+
+
+#3
+
+
+#4
+
+
+###Problem Set 3 Beginning
 
 #Problem 1
 
