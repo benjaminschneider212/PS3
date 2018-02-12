@@ -57,9 +57,16 @@ setClass(Class="door", #this is the creation of the s4 class door with a numeric
          )
 )
 
+setValidity("door", function(object){
+  x<-object@x
+  test1<-all(x==object@x)#to make sure the variables exist correctly
+  if(!test1){return("You need to fix something")}
+})
+
 door1<-new("door", x=1) #example of setting an object with class door and the door value of 1
 door2<-new("door", x=2)
 door3<-new("door", x=3)
+doorbanana<-new("door", x="banana") #example of something that will throw the validity function
 
 setGeneric("PlayGame",
            function(object="door"){
