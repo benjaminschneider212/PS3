@@ -8,59 +8,85 @@
 #Activity 5 from Class
 
 #1 Students
-HP<-as.list(c("name","courage","ambition", "intelligence", "effort"))
-class(HP)<-"student"
-
-#2 Sorter
 sortinghat<-function(name){
+  name="character"
   courage<-sample(1:100,1)
   ambition<-sample(1:100,1)
   intelligence<-sample(1:100,1)
   effort<-sample(1:100,1)
-  mystudent<- list(name, courage, ambition, intelligence, effort)
+  attri<-c(courage, ambition, intelligence, effort)
+  mystudent<- as.list(attri)
   class(mystudent) <- "student"
   return(mystudent)
 }
-domattributes<-c(sortinghat("dom")[[2]],sortinghat("dom")[[3]],sortinghat("dom")[[4]],sortinghat("dom")[[5]])
-?sort
-sort.student<-function(x, decreasing = FALSE, ...){
-  a<-domattributes
-  y<-diag(1,4)
-  output<-x%*%y%*%a
-  return()
+blah<-sortinghat("Ben")
+blah<-c(blah[[1]],blah[[2]],blah[[3]],blah[[4]])
+
+#2 Sorter
+
+bler<-diag(1,4)
+bler<-as.matrix(y)
+
+sort.student<-function(x, decreasing = FALSE, ...){ #this is to set up the method
+  UseMethod("sort", x, y)
 }
-y<-diag(1,4)
-t(y)%*%domattributes
-x<-as.matrix()
-sort.student()
 
-y<-diag(1,4)
-names<-c("ben","zoe", "dom")
-class(names)<-"student"
-class(names)
+sort.student<-function(x,y){
+  sorter<-x%*%y
+  if(sorter[[1]]==max(sorter)){
+    return("GRYFFINDOR")}
+  if(sorter[[2]]==max(sorter)){
+    return("SLYTHERIN")}
+  if(sorter[[3]]==max(sorter)){
+    return("RAVENCLAW")}
+  if(sorter[[4]]==max(sorter)){
+    return("HUFFLEPUFF")}
+  else{return("you done messed up")}
+}
 
-setClass(Class="student",
-         representation=representation(
-           name= "character",
-           courage= "numeric",
-           ambition= "numeric",
-           intelligence= "numeric",
-           effort= "numeric"),
-         prototype=prototype(
-           name=c(),
-           courage=c(1:100),
-           ambition=c(1:100),
-           intelligence=c(1:100),
-           effort=c(1:100)
-         )
-)
-
+sort.student(blah,bler)
 
 #3
+class(blah)<-"student"
+sort.student<-function(x,y){
+  sorter<-x%*%y
+  student<-x
+  class(student)<-"student"
+  if(sorter[[1]]==max(sorter)){
+    class(student)<-"Gryffindor"}
+  if(sorter[[2]]==max(sorter)){
+    class(student)<-"Slytherin"}
+  if(sorter[[3]]==max(sorter)){
+    class(student)<-"Ravenclaw"}
+  if(sorter[[4]]==max(sorter)){
+    class(student)<-"Hufflepuff"}
+  return(student)
+}
 
+Ben<-sort.student(blah,bler)
 
 #4
+curfew<-function(x){
+  return(x)
+}
 
+curfew.student<-function(x){ #this is to set up the method
+  UseMethod("sort", x)
+}
+
+curfew.student<-function(x){
+  if(class(x)=="Gryffindor"){
+    class(x)<-"Gryffindor_Tower"}
+  if(class(x)=="Slytherin"){
+    class(x)<-"Black_Lake"}
+  if(class(x)=="Ravenclaw"){
+    class(x)<-"Ravenclaw_Tower"}
+  if(class(x)=="Hufflepuff"){
+    class(x)<-"Basement"}
+  return(x)
+}
+
+curfew.student(Ben)
 
 ###Problem Set 3 Beginning
 
