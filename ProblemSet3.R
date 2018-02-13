@@ -16,22 +16,21 @@ sortinghat<-function(name){
   effort<-sample(1:100,1)
   attri<-c(courage, ambition, intelligence, effort)
   mystudent<- as.list(attri)
-  class(mystudent) <- "student"
+  class(mystudent) <- "student" #assign the class
   return(mystudent)
 }
 blah<-sortinghat("Ben")
-blah<-c(blah[[1]],blah[[2]],blah[[3]],blah[[4]])
+blah<-c(blah[[1]],blah[[2]],blah[[3]],blah[[4]]) #Transfering the data into a vector
 
 #2 Sorter
 
-bler<-diag(1,4)
-bler<-as.matrix(y)
+bler<-diag(1,4)#create an identity matrix for input
 
 sort.student<-function(x, decreasing = FALSE, ...){ #this is to set up the method
   UseMethod("sort", x, y)
 }
 
-sort.student<-function(x,y){
+sort.student<-function(x,y){ #great so this is our requested input function!
   sorter<-x%*%y
   if(sorter[[1]]==max(sorter)){
     return("GRYFFINDOR")}
@@ -44,11 +43,11 @@ sort.student<-function(x,y){
   else{return("you done messed up")}
 }
 
-sort.student(blah,bler)
+sort.student(blah,bler) #Success
 
 #3
 class(blah)<-"student"
-sort.student<-function(x,y){
+sort.student<-function(x,y){ #now going to assign a new class depending on which they were selected into
   sorter<-x%*%y
   student<-x
   class(student)<-"student"
@@ -63,10 +62,10 @@ sort.student<-function(x,y){
   return(student)
 }
 
-Ben<-sort.student(blah,bler)
+Ben<-sort.student(blah,bler) #awesome
 
 #4
-curfew<-function(x){
+curfew<-function(x){#create function
   return(x)
 }
 
@@ -74,6 +73,7 @@ curfew.student<-function(x){ #this is to set up the method
   UseMethod("sort", x)
 }
 
+#do this to create the new environments
 Gryffindor_Tower<-new.env()
 Black_Lake<-new.env()
 Ravenclaw_Tower<-new.env()
@@ -104,7 +104,7 @@ curfew.student<-function(x){ #This way it shows up as a class
 }
 
 ben<- curfew.student(Ben)
-ben
+ben #Success, new environment
 
 ###Problem Set 3 Beginning
 
