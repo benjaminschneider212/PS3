@@ -74,7 +74,24 @@ curfew.student<-function(x){ #this is to set up the method
   UseMethod("sort", x)
 }
 
-curfew.student<-function(x){
+Gryffindor_Tower<-new.env()
+Black_Lake<-new.env()
+Ravenclaw_Tower<-new.env()
+Basement<-new.env()
+
+curfew.student<-function(x){ #this way should be environment assignment, but I can't see it
+  if(class(x)=="Gryffindor"){
+    Gryffindor_Tower<-x}
+  if(class(x)=="Slytherin"){
+    Black_Lake<-x}
+  if(class(x)=="Ravenclaw"){
+    Ravenclaw_Tower<-x}
+  if(class(x)=="Hufflepuff"){
+    Basement<-x}
+  return(x)
+}
+
+curfew.student<-function(x){ #This way it shows up as a class
   if(class(x)=="Gryffindor"){
     class(x)<-"Gryffindor_Tower"}
   if(class(x)=="Slytherin"){
@@ -86,7 +103,8 @@ curfew.student<-function(x){
   return(x)
 }
 
-curfew.student(Ben)
+ben<- curfew.student(Ben)
+ben
 
 ###Problem Set 3 Beginning
 
